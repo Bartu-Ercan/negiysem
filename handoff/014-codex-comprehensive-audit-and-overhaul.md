@@ -1,5 +1,7 @@
 # Görev 014 — Kapsamlı denetim ve iyileştirme
 
+> **Sonraki doğrulama:** Bu dosya yerel denetim anının tarihsel kaydıdır. Buradaki headless engeli Görev 015 sırasında GitHub Actions üzerinde çözüldü. 390/1440px kontrolleri ve 8 tarayıcı testi geçti: https://github.com/Bartu-Ercan/negiysem/actions/runs/43882577258. Güncel teslim: `handoff/015-product-completion.md`.
+
 Kullanılan skill'ler: playwright-cli, better-interface, better-layout, better-typography, better-colors, animate.
 
 **Durum:** Kod iyileştirmeleri, derleme ve otomatik kaynak testleri tamamlandı. **390/1440 px headless tarayıcı kabulü doğrulanamadı; görev tüm kabul kriterleriyle onaylanmış sayılmamalı.** Playwright kullanımı, başlatma denemeleri ve tekrar çalıştırılabilir senaryonun hazırlanmasını kapsar; başarılı tarayıcı çalıştırması iddia edilmez.

@@ -16,9 +16,19 @@ Negiysem; hissedilen sıcaklığı, yağışı ve rüzgârı kişisel giyim kara
 - [Yayınlama](#yayınlama)
 - [Mimari](#mimari)
 
+## Görünüm
+
+![Masaüstü uygulama görünümü](docs/screenshots/product-desktop.png)
+
+<details><summary>390px mobil görünümü aç</summary>
+<img src="docs/screenshots/product-mobile.png" alt="Negiysem mobil uygulama görünümü" width="390" />
+</details>
+
+Ekran görüntüleri GitHub Actions üzerinde çalışan gerçek Chromium'dan, demo verisiyle alınmıştır.
+
 ## Hızlı başlangıç
 
-Node.js **22 LTS** ve npm gerekir. API anahtarı veya `.env` dosyası gerekmez.
+Node.js **22 LTS** ve npm gerekir. [Doğrulanmış CI koşusu](https://github.com/Bartu-Ercan/negiysem/actions/runs/43882577258): 104 birim testi ve 8 headless tarayıcı testi başarılı. API anahtarı veya `.env` dosyası gerekmez.
 
 ```bash
 npm ci
