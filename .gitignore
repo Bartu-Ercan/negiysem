@@ -21,3 +21,6 @@ out/
 # Browser reports
 playwright-report/
 test-results/
+
+# Vercel local project metadata
+.vercel/
