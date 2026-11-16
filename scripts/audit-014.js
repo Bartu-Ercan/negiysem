@@ -75,7 +75,7 @@ async page => {
   await page.getByRole('button', { name: /^Konumu değiştir:/ }).click();
   await page.getByRole('searchbox').fill('ankara');
   await page.getByRole('button', { name: /Ankara \/ Çankaya/ }).click();
-  await page.getByRole('alert').waitFor();
+  await page.getByRole('main').getByRole('alert').waitFor();
   assert(await page.getByRole('button', { name: 'Konumu değiştir: İstanbul / Kadıköy & Moda' }).isVisible(), 'failed fetch must keep previous location and data');
   await page.context().grantPermissions(['geolocation']);
   await page.context().setGeolocation({ latitude: 39.12345, longitude: 32.12345 });

@@ -140,3 +140,8 @@
   }
   @media (max-width: 350px) { .brand-mark { display: none; } .hero-title { font-size: 2.6rem; } }
 }
+
+@layer components {
+  .skip-link { width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; transform: none; }
+  .skip-link:focus { width: auto; height: auto; padding: 12px 18px; overflow: visible; clip-path: none; }
+}

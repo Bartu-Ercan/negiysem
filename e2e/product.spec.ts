@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test';
 test.beforeEach(async ({ page }) => {
   await page.goto('/?demo=1');
   await expect(page.getByRole('button', { name: 'Kişisel tercihleri aç' })).toBeVisible();
+  await page.waitForFunction(() => localStorage.getItem('negiysem_user_preferences') !== null);
 });
 
 test('complete dashboard, seven days, no overflow or clipped card text', async ({ page }, testInfo) => {
@@ -22,6 +23,7 @@ test('complete dashboard, seven days, no overflow or clipped card text', async (
   expect(errors).toEqual([]);
   await page.getByRole('slider').press('Home');
   await page.getByRole('slider').blur();
+  await expect(page.getByRole('link', { name: 'İçeriğe geç' })).not.toBeFocused();
   await page.screenshot({ path: testInfo.outputPath('product.png'), fullPage: true });
 });
 
@@ -58,6 +60,6 @@ test('Turkish search and recoverable network error preserve previous location', 
   await page.getByRole('button', { name: /^Konumu değiştir:/ }).click();
   await page.getByRole('searchbox').fill('kadikoy');
   await page.getByRole('button', { name: /İstanbul \/ Kadıköy & Moda/ }).click();
-  await expect(page.getByRole('alert')).toContainText('Önceki konum gösteriliyor');
+  await expect(page.getByRole('main').getByRole('alert')).toContainText('Önceki konum gösteriliyor');
   await expect(page.getByRole('button', { name: /^Konumu değiştir:/ })).toContainText('Beşiktaş');
 });
