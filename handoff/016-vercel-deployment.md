@@ -1,5 +1,7 @@
 # Vercel üretim yayını — tamamlandı
 
+> **Sonraki aşama:** Kullanıcı özel repoya kalıcı Vercel erişimini açıkça onayladı. GitHub `main` otomatik yayını 017 aşamasında bağlandı ve gerçek bir Git deployment ile doğrulandı. Bu dosyanın izin engeli bölümü ilk yayın anının tarihsel kaydıdır; güncel durum `handoff/017-final-delivery.md` dosyasındadır.
+
 Kullanılan skill'ler: yok (Vercel CLI, GitHub CLI, canlı HTTP doğrulaması).
 
 ## Canlı adresler

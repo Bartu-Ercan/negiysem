@@ -30,7 +30,7 @@ Ekran görüntüleri GitHub Actions üzerinde çalışan gerçek Chromium'dan, d
 
 ## Hızlı başlangıç
 
-Node.js **22 LTS** ve npm gerekir. [Doğrulanmış CI koşusu](https://github.com/Bartu-Ercan/negiysem/actions/runs/43882577258): 104 birim testi ve 8 headless tarayıcı testi başarılı. API anahtarı veya `.env` dosyası gerekmez.
+Node.js **22 LTS** ve npm gerekir. [Doğrulanmış CI koşusu](https://github.com/Bartu-Ercan/negiysem/actions/runs/43889502073): 104 birim testi ve 8 headless tarayıcı testi başarılı. API anahtarı veya `.env` dosyası gerekmez.
 
 ```bash
 npm ci
@@ -86,7 +86,9 @@ npm run test:e2e
 
 Uygulama, Next.js sunucu rotaları kullandığı için **Node.js destekli** bir host üzerinde çalıştırılmalıdır.
 
-**Vercel:** GitHub reposunu içe aktar; framework **Next.js**, build komutu **`npm run build`**. Ortam değişkeni gerekmez.
+**Otomatik yayın aktif:** Özel GitHub reposunun `main` dalına gönderilen değişiklikler Vercel üretim yayınına otomatik dağıtılır. Node.js sürümü test ortamıyla aynı olacak şekilde **22.x** olarak sabitlenmiştir.
+
+**Yeni bir Vercel hesabında kurulum:** GitHub reposunu içe aktar; framework **Next.js**, build komutu **`npm run build`**. Ortam değişkeni gerekmez.
 
 **Diğer Node.js hostları:** `npm ci`, `npm run build`, ardından `npm start -- --hostname 0.0.0.0`. Platformun verdiği `PORT` ortam değişkeni Next.js tarafından kullanılır.
 
