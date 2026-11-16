@@ -1,0 +1,42 @@
+{
+  "name": "negiysem",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --webpack",
+    "build": "next build --webpack",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "tsc --outDir .next/cache/decision-tests --module commonjs --target es2020 --esModuleInterop --skipLibCheck --strict __tests__/*.test.ts && node --test .next/cache/decision-tests/__tests__/*.test.js",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.2"
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "description": "Hava değişir. Sen hazır çık. Kişisel giyim ve hava rehberi.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bartu-Ercan/negiysem.git"
+  }
+}

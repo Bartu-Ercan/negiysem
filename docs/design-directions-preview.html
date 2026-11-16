@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Negiysem — Tasarım Yönleri Karşılaştırma ve Görsel Önizleme</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090a0f;
+      --text: #f1f5f9;
+      --muted: #64748b;
+      --border: #1e293b;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      min-height: 100vh;
+      padding: 32px 24px;
+      line-height: 1.5;
+    }
+    .header {
+      max-width: 1360px;
+      margin: 0 auto 32px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+    }
+    .header-title h1 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+    }
+    .header-title p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .scenario-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid #334155;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    .scenario-badge strong {
+      color: #38bdf8;
+    }
+
+    /* Switcher controls */
+    .view-controls {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      max-width: 1360px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .tab-btn {
+      background: #131823;
+      border: 1px solid var(--border);
+      color: #94a3b8;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: #1e293b;
+      color: #fff;
+      border-color: #475569;
+    }
+    .tab-btn.active {
+      box-shadow: 0 0 0 1px #38bdf8;
+    }
+
+    /* Direction Grid */
+    .directions-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      align-items: start;
+    }
+    @media (max-width: 1100px) {
+      .directions-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dir-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .dir-meta {
+      padding: 4px 8px;
+    }
+    .dir-meta-tag {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .dir-meta-title {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .dir-meta-desc {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.4;
+    }
+
+    /* Screen Mockup Frame (simulates mobile app width 390px inside column) */
+    .mockup-frame {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px -15px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-height: 720px;
+    }
+
+    /* ========================================================
+       DIRECTION 1: Atelier Utilitarian
+       ======================================================== */
+    .theme-atelier {
+      background: #121316;
+      color: #ececed;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+    }
+    .theme-atelier .phone-header {
+      padding: 20px 20px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #23252b;
+    }
+    .theme-atelier .brand-mark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fafafa;
+    }
+    .theme-atelier .status-pill {
+      font-size: 11px;
+      font-weight: 600;
+      color: #d97706;
+      background: rgba(217, 119, 6, 0.12);
+      border: 1px solid rgba(217, 119, 6, 0.3);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .theme-atelier .main-hero {
+      padding: 20px;
+    }
+    .theme-atelier .hero-lead {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #71717a;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .theme-atelier .hero-decision {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    .theme-atelier .hero-subtext {
+      font-size: 13px;
+      color: #a1a1aa;
+      line-height: 1.45;
+    }
+
+    /* Timeline gauge */
+    .theme-atelier .gauge-box {
+      margin: 0 20px 18px;
+      background: #181a1f;
+      border: 1px solid #272a33;
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .theme-atelier .gauge-title {
+      font-size: 11px;
+      font-weight: 600;
+      color: #71717a;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+    .theme-atelier .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+    .theme-atelier .time-slot {
+      background: #20232a;
+      border: 1px solid #2d313b;
+      border-radius: 8px;
+      padding: 8px 6px;
+      text-align: center;
+    }
+    .theme-atelier .time-slot.alert {
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.1);
+    }
+    .theme-atelier .slot-time {
+      font-size: 11px;
+      color: #71717a;
+      font-weight: 500;
+    }
+    .theme-atelier .slot-temp {
+      font-size: 13px;
+      font-weight: 700;
+      color: #e4e4e7;
+      margin: 2px 0;
+    }
+    .theme-atelier .slot-icon {
+      font-size: 11px;
+      font-weight: 600;
+      color: #d4d4d8;
+    }
+    .theme-atelier .time-slot.alert .slot-icon {
+      color: #60a5fa;
+    }
+
+    /* Atelier Decision Cards */
+    .theme-atelier .cards-stack {
+      padding: 0 20px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .theme-atelier .dec-card {
+      background: #181a1f;
+      border: 1px solid #272a33;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .theme-atelier .dec-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .theme-atelier .dec-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #71717a;
+      font-weight: 600;
+    }
+    .theme-atelier .dec-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .theme-atelier .dec-tag.ok {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .theme-atelier .dec-tag.warn {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .theme-atelier .dec-tag.action {
+      background: rgba(59, 130, 246, 0.15);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+    }
+    .theme-atelier .dec-main {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f4f4f5;
+    }
+    .theme-atelier .dec-detail {
+      font-size: 12px;
+      color: #8e909a;
+      line-height: 1.4;
+    }
+
+    /* ========================================================
+       DIRECTION 2: Atmospheric Editorial
+       ======================================================== */
+    .theme-editorial {
+      background: #0a0e17;
+      color: #f8fafc;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Subtle ambient mesh glow */
+    .theme-editorial::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(14, 165, 233, 0) 70%);
+      pointer-events: none;
+    }
+    .theme-editorial::after {
+      content: "";
+      position: absolute;
+      top: 180px;
+      left: -80px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, rgba(245, 158, 11, 0) 70%);
+      pointer-events: none;
+    }
+    .theme-editorial .phone-header {
+      position: relative;
+      z-index: 2;
+      padding: 22px 20px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .theme-editorial .brand-mark {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 18px;
+      font-weight: 500;
+      color: #f1f5f9;
+    }
+    .theme-editorial .location-tag {
+      font-size: 12px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .theme-editorial .main-hero {
+      position: relative;
+      z-index: 2;
+      padding: 16px 20px 20px;
+    }
+    .theme-editorial .hero-meta {
+      display: flex;
+      gap: 12px;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+    .theme-editorial .hero-headline {
+      font-family: 'Fraunces', serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.22;
+      letter-spacing: -0.02em;
+      color: #f8fafc;
+      margin-bottom: 12px;
+    }
+    .theme-editorial .hero-headline em {
+      font-style: italic;
+      color: #38bdf8;
+    }
+    .theme-editorial .hero-sub {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.5;
+    }
+
+    /* Editorial Glass Cards */
+    .theme-editorial .cards-stack {
+      position: relative;
+      z-index: 2;
+      padding: 0 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .theme-editorial .glass-card {
+      background: rgba(22, 30, 46, 0.6);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 16px 18px;
+    }
+    .theme-editorial .glass-card.highlight {
+      border-color: rgba(56, 189, 248, 0.35);
+      background: rgba(30, 45, 71, 0.55);
+    }
+    .theme-editorial .card-category {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+    .theme-editorial .card-verdict {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .theme-editorial .card-prose {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.45;
+    }
+
+    /* ========================================================
+       DIRECTION 3: Tactile Cockpit / Brutal Clarity
+       ======================================================== */
+    .theme-cockpit {
+      background: #000000;
+      color: #f5f5f5;
+      font-family: 'JetBrains Mono', monospace;
+      position: relative;
+    }
+    .theme-cockpit .phone-header {
+      padding: 16px 16px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid #222222;
+    }
+    .theme-cockpit .brand-mark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      background: #ffffff;
+      color: #000000;
+      padding: 2px 6px;
+    }
+    .theme-cockpit .telemetry-ping {
+      font-size: 11px;
+      color: #22c55e;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .theme-cockpit .telemetry-ping::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: #22c55e;
+      border-radius: 50%;
+    }
+    .theme-cockpit .main-hero {
+      padding: 16px;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    .theme-cockpit .tele-tag {
+      font-size: 11px;
+      color: #888888;
+      margin-bottom: 6px;
+    }
+    .theme-cockpit .cockpit-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .theme-cockpit .status-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .theme-cockpit .strip-cell {
+      background: #0d0d0d;
+      border: 1px solid #262626;
+      padding: 8px 10px;
+    }
+    .theme-cockpit .cell-k {
+      font-size: 10px;
+      color: #777777;
+      text-transform: uppercase;
+    }
+    .theme-cockpit .cell-v {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-top: 2px;
+    }
+    .theme-cockpit .cards-stack {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .theme-cockpit .cockpit-card {
+      background: #0d0d0d;
+      border: 1px solid #262626;
+      padding: 12px 14px;
+      border-left: 3px solid #666;
+    }
+    .theme-cockpit .cockpit-card.alert-blue {
+      border-left-color: #3b82f6;
+    }
+    .theme-cockpit .cockpit-card.alert-amber {
+      border-left-color: #f59e0b;
+    }
+    .theme-cockpit .cockpit-card.alert-green {
+      border-left-color: #22c55e;
+    }
+    .theme-cockpit .cp-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      margin-bottom: 4px;
+    }
+    .theme-cockpit .cp-item {
+      color: #888888;
+      font-weight: 500;
+    }
+    .theme-cockpit .cp-badge {
+      font-weight: 700;
+    }
+    .theme-cockpit .cp-badge.blue { color: #60a5fa; }
+    .theme-cockpit .cp-badge.amber { color: #fbbf24; }
+    .theme-cockpit .cp-badge.green { color: #4ade80; }
+    .theme-cockpit .cp-val {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 3px;
+    }
+    .theme-cockpit .cp-note {
+      font-size: 11px;
+      color: #888888;
+      line-height: 1.35;
+    }
+
+    /* Comparison table underneath */
+    .compare-section {
+      max-width: 1360px;
+      margin: 48px auto 0;
+      background: #111520;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .compare-section h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .table-responsive {
+      overflow-x: auto;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid #1e293b;
+    }
+    th {
+      color: #94a3b8;
+      font-weight: 600;
+      background: #161c2a;
+    }
+    td strong {
+      color: #f8fafc;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-title">
+      <h1>Negiysem — Tasarım Yönleri Karşılaştırma Ekranı</h1>
+      <p>Gerçek İstanbul hava durumu senaryosu üzerinde 3 yönün doğrudan ekran dili ve tipografi hissi</p>
+    </div>
+    <div class="scenario-badge">
+      <span>Canlı Test Senaryosu:</span>
+      <strong>İstanbul (17°C, 15:00'te Poyraz & Sağanak, Akşam 11°C Hissedilen)</strong>
+    </div>
+  </header>
+
+  <main class="directions-container">
+
+    <!-- DIRECTION 1 -->
+    <div class="dir-column">
+      <div class="dir-meta">
+        <span class="dir-meta-tag" style="color: #f59e0b;">Yön 1</span>
+        <h2 class="dir-meta-title">Atelier Utilitarian</h2>
+        <p class="dir-meta-desc">Teknik dış giyim kataloğu & İsviçre editoryal disiplini. Sakin, güvenilir, mimari netlik.</p>
+      </div>
+
+      <div class="mockup-frame theme-atelier">
+        <div class="phone-header">
+          <span class="brand-mark">NEGIYSEM</span>
+          <span class="status-pill">15:00 SAĞANAK</span>
+        </div>
+
+        <div class="main-hero">
+          <div class="hero-lead">İstanbul · Beşiktaş / 17°C</div>
+          <div class="hero-decision">Hafif ceketini yanına al, 15:00'ten sonra yağmur var.</div>
+          <p class="hero-subtext">Öğlen sıcaklık 20°C'ye çıkar, kollar sıvanabilir. Akşam poyrazla hissedilen 11°C'ye düşecek.</p>
+        </div>
+
+        <div class="gauge-box">
+          <div class="gauge-title">
+            <span>Günün Katman Çizelgesi</span>
+            <span style="color:#d97706;">Poyraz 28 km/s</span>
+          </div>
+          <div class="timeline-grid">
+            <div class="time-slot">
+              <div class="slot-time">08:00</div>
+              <div class="slot-temp">15°C</div>
+              <div class="slot-icon">Tişört+Hırka</div>
+            </div>
+            <div class="time-slot">
+              <div class="slot-time">12:00</div>
+              <div class="slot-temp">20°C</div>
+              <div class="slot-icon">Tişört</div>
+            </div>
+            <div class="time-slot alert">
+              <div class="slot-time">15:00</div>
+              <div class="slot-temp">16°C</div>
+              <div class="slot-icon">☔ Sağanak</div>
+            </div>
+            <div class="time-slot">
+              <div class="slot-time">19:00</div>
+              <div class="slot-temp">12°C</div>
+              <div class="slot-icon">Ceket Şart</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-stack">
+          <div class="dec-card">
+            <div class="dec-head">
+              <span class="dec-label">Dış Giyim</span>
+              <span class="dec-tag warn">Akşam Şart</span>
+            </div>
+            <div class="dec-main">Rüzgârlık veya Denim Ceket</div>
+            <div class="dec-detail">18:00'den sonra vapurda ve açık alanda sert poyraz var. Çantanda yer aç.</div>
+          </div>
+
+          <div class="dec-card">
+            <div class="dec-head">
+              <span class="dec-label">Ayakkabı</span>
+              <span class="dec-tag action">Süet Giyme</span>
+            </div>
+            <div class="dec-main">Deri veya Koyu Sneaker</div>
+            <div class="dec-detail">Saat 15:00'ten sonra su birikintisi riski yüksek. Bez veya açık renk ayakkabı ıslanır.</div>
+          </div>
+
+          <div class="dec-card">
+            <div class="dec-head">
+              <span class="dec-label">Terler miyim?</span>
+              <span class="dec-tag ok">Mont Fazla Gelir</span>
+            </div>
+            <div class="dec-main">Kalın mont giyersen metroda pişersin</div>
+            <div class="dec-detail">Katmanlı giyinmek en doğrusu: tişört + ceket formülü ideal.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIRECTION 2 -->
+    <div class="dir-column">
+      <div class="dir-meta">
+        <span class="dir-meta-tag" style="color: #38bdf8;">Yön 2</span>
+        <h2 class="dir-meta-title">Atmospheric Editorial</h2>
+        <p class="dir-meta-desc">Sisli Boğaz atmosferi, fotojenik derinlik, editoryal serif manşetler ve yumuşak ışık.</p>
+      </div>
+
+      <div class="mockup-frame theme-editorial">
+        <div class="phone-header">
+          <span class="brand-mark">negiysem.</span>
+          <span class="location-tag">Kadıköy, 17°</span>
+        </div>
+
+        <div class="main-hero">
+          <div class="hero-meta">
+            <span>Bulutlu & Rüzgârlı</span>
+            <span>·</span>
+            <span>Nem %72</span>
+          </div>
+          <h1 class="hero-headline">Akşam ceketini almadan çıkarsan <em>Boğaz'da donarsın.</em></h1>
+          <p class="hero-sub">Gündüz güneş ısıtır ama saat 15:00'te hava aniden döner. Yanına hafif bir katman ve şemsiye almayı unutma.</p>
+        </div>
+
+        <div class="cards-stack">
+          <div class="glass-card highlight">
+            <div class="card-category" style="color: #38bdf8;">15:00 Kritik Değişim</div>
+            <div class="card-verdict">Şemsiye: Kesinlikle Yanına Al</div>
+            <div class="card-prose">Öğleden sonra 4.2 mm/saat sağanak geçişi var. Süet ayakkabılarını bugün dolapta bırak.</div>
+          </div>
+
+          <div class="glass-card">
+            <div class="card-category">Dış Giyim Tavsiyesi</div>
+            <div class="card-verdict">Hafif Trençkot veya Bomber</div>
+            <div class="card-prose">Öğle saatlerinde elinde taşırsın, saat 18:30 sonrası hayat kurtarır.</div>
+          </div>
+
+          <div class="glass-card">
+            <div class="card-category">Konfor & Terleme Riski</div>
+            <div class="card-verdict">İçine Pamuklu Kısa Kol Giy</div>
+            <div class="card-prose">Toplu taşımada sıcaklık yüksek olacak. Tek kalın kazak yerine iki hafif katman seç.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIRECTION 3 -->
+    <div class="dir-column">
+      <div class="dir-meta">
+        <span class="dir-meta-tag" style="color: #4ade80;">Yön 3</span>
+        <h2 class="dir-meta-title">Tactile Cockpit</h2>
+        <p class="dir-meta-desc">Analog enstrüman paneli, kesin kararlar, sıfır edebiyat. Yüksek kontrastlı telemetri.</p>
+      </div>
+
+      <div class="mockup-frame theme-cockpit">
+        <div class="phone-header">
+          <span class="brand-mark">NEGIYSEM / SYS</span>
+          <span class="telemetry-ping">LIVE · ISTANBUL</span>
+        </div>
+
+        <div class="main-hero">
+          <div class="tele-tag">VERDICT // 2026-11-16</div>
+          <div class="cockpit-title">CEKET: 18:00+<br>AYAKKABI: DERİ/KOYU</div>
+          
+          <div class="status-strip">
+            <div class="strip-cell">
+              <div class="cell-k">YAĞIŞ TELEMETRİSİ</div>
+              <div class="cell-v" style="color: #60a5fa;">15:00 (SAĞANAK)</div>
+            </div>
+            <div class="strip-cell">
+              <div class="cell-k">RÜZGÂR ŞİDDETİ</div>
+              <div class="cell-v" style="color: #fbbf24;">28 KM/S POYRAZ</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards-stack">
+          <div class="cockpit-card alert-blue">
+            <div class="cp-header">
+              <span class="cp-item">[AYAKKABI SEÇİMİ]</span>
+              <span class="cp-badge blue">ISLANMA RİSKİ</span>
+            </div>
+            <div class="cp-val">Bez/Süet: RED // Koyu Sneaker: KABUL</div>
+            <div class="cp-note">15:00 sonrasında su birikintisi eşiği aşılıyor. Açık renk ve geçirgen kumaş riskli.</div>
+          </div>
+
+          <div class="cockpit-card alert-amber">
+            <div class="cp-header">
+              <span class="cp-item">[DIŞ GİYİM]</span>
+              <span class="cp-badge amber">KATMAN GEREKLİ</span>
+            </div>
+            <div class="cp-val">Mont: TERLETİR // Ceket: ŞART</div>
+            <div class="cp-note">Gündüz 17°C, akşam rüzgâr etkisiyle 11°C hissedilen. Kalın mont toplu taşımada terletir.</div>
+          </div>
+
+          <div class="cockpit-card alert-green">
+            <div class="cp-header">
+              <span class="cp-item">[ŞEMSİYE DURUMU]</span>
+              <span class="cp-badge green">ÇANTAYA KOY</span>
+            </div>
+            <div class="cp-val">15:30 - 18:00 Arası Aktif Yağış</div>
+            <div class="cp-note">Kompakt katlanır şemsiye yeterli. Rüzgâr sert, telleri sağlam tut.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Summary Table -->
+  <section class="compare-section">
+    <h2>Hangi Yön Ne Vadediyor?</h2>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Özellik</th>
+            <th>Yön 1: Atelier Utilitarian</th>
+            <th>Yön 2: Atmospheric Editorial</th>
+            <th>Yön 3: Tactile Cockpit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Görsel Dil</strong></td>
+            <td>Teknik katalog, mat taş grisi, 1px net sınırlar</td>
+            <td>Boğaz sisi mavisi, cam panel derinliği, yumuşak ışık</td>
+            <td>Saf siyah, endüstriyel sınırlar, yüksek kontrast</td>
+          </tr>
+          <tr>
+            <td><strong>Tipografi</strong></td>
+            <td>Space Grotesk + Inter (Mimari ve okunaklı)</td>
+            <td>Fraunces (Zarif Serif) + Plus Jakarta Sans</td>
+            <td>Space Grotesk + JetBrains Mono (Telemetrik)</td>
+          </tr>
+          <tr>
+            <td><strong>Kullanıcı Hissi</strong></td>
+            <td>"Dolap kapağında duran zevkli bir stil danışmanı"</td>
+            <td>"Karakteri olan bir moda & şehir dergisi"</td>
+            <td>"Hassas, tavizsiz ve net bir şehir göstergesi"</td>
+          </tr>
+          <tr>
+            <td><strong>Yağmur Hareketi</strong></td>
+            <td>Rüzgâr açısıyla senkron, net vektörel çizgiler</td>
+            <td>Alan derinlikli, çift katmanlı sinematik damlalar</td>
+            <td>Keskin telemetri çizgileri, otomobil ön camı açısı</td>
+          </tr>
+          <tr>
+            <td><strong>Para Verme İsteği (Algı)</strong></td>
+            <td>Üst düzey fonksiyonel ürün, Arc'teryx/Braun güveni</td>
+            <td>Premium tasarım zevki, Apple Editorial ödüllü his</td>
+            <td>Benzersiz araç, Teenage Engineering benzeri kult ürün</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+</body>
+</html>

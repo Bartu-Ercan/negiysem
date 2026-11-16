@@ -1,0 +1,3 @@
+export default function Loading() {
+  return <main className="mx-auto max-w-5xl px-6 py-20" aria-busy="true" aria-label="Hava tahmini yükleniyor"><p className="section-eyebrow">NEGIYSEM</p><h1 className="mt-5 font-display text-4xl font-medium tracking-tight">Gününe hazırlanıyoruz.</h1><p role="status" className="mt-4 text-sm text-text-secondary">Saatlik tahmin ve giyim kararları yükleniyor.</p><div className="mt-12 grid gap-4 sm:grid-cols-2" aria-hidden="true"><div className="h-64 rounded-2xl border border-border-hairline bg-bg-surface" /><div className="h-64 rounded-2xl border border-border-hairline bg-bg-surface" /></div></main>;
+}
