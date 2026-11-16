@@ -23,3 +23,5 @@ Kullanıcı üretim yayını için Vercel yetkisi verdi. Uygulama build/test/CI 
 ## Devam adımı
 
 Kullanıcı kendi terminalinde `vercel login` ile oturumunu yeniledikten sonra bu oturumu kullanarak proje hesabı doğrulanacak, üretim deploy'u yapılacak ve public ana sayfa/API yanıtları kontrol edilecek.
+
+Son denemede cihaz doğrulama bağlantısı oluşturuldu ancak token polling isteği de proxy timeout ile sonlandı. CLI işlemi kapandı; kullanıcıdan kendi terminalinde `vercel login` ile oturum yenilemesi gerekiyor. Geçici kopya auth dosyası temizlendi; orijinal Vercel oturum dosyasına yazılmadı.
