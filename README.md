@@ -4,6 +4,8 @@
 
 **“Bugün ne giysem?” sorusuna, hava tahmininden net bir cevap.**
 
+**[Canlı uygulama](https://negiysem-bice.vercel.app)** · **[Demoyu keşfet](https://negiysem-bice.vercel.app/?demo=1)**
+
 Negiysem; hissedilen sıcaklığı, yağışı ve rüzgârı kişisel giyim kararlarına çevirir. Bir hava durumu tablosundan fazlası: dış giyim, üst giyim, ayakkabı, şemsiye ve konfor için tek bakışta anlaşılır bir plan.
 
 **Next.js 16 · React 19 · TypeScript · Tailwind CSS · Open-Meteo · Playwright**

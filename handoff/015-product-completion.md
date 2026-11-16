@@ -1,5 +1,7 @@
 # Negiysem 1.0 — Tamamlanmış ürün teslimi
 
+> Sonraki aşamada Vercel üretim yayını tamamlandı: https://negiysem-bice.vercel.app. Kanıtlar `handoff/016-vercel-deployment.md` dosyasında. Aşağıdaki kaynak teslimi kaydı önceki aşamaya aittir.
+
 Kullanılan skill'ler: playwright-cli, better-interface, better-layout, better-typography, better-colors, animate.
 
 Kullanıcının doğrudan talebiyle kapsam, mevcut ürünün tamamlanması ve GitHub teslimi olarak genişletildi. **Ürün kodu, tasarım, README ve CI tamamlandı; kod kabulü geçti.**
